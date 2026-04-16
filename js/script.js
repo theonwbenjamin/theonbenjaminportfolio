@@ -46,22 +46,16 @@ window.addEventListener("load", () => {
         toggleBtn.textContent = "Light Mode";
     }
 });
+const burger = document.getElementById("burger");
+const navLinks = document.getElementById("navLinks");
 
-const backToTopBtn = document.getElementById("backToTop");
-
-// show button on scroll
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add("show");
-    } else {
-        backToTopBtn.classList.remove("show");
-    }
+burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    navLinks.classList.toggle("active");
 });
-
-// scroll to top
-backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+document.querySelectorAll("#navLinks a").forEach(link => {
+    link.addEventListener("click", () => {
+        burger.classList.remove("active");
+        navLinks.classList.remove("active");
     });
 });
