@@ -4,6 +4,7 @@
     --text: #1a1a1a;
     --accent: #666666;
     --spacing: 40px;
+    --spacing: clamp(16px, 4vw, 40px);
 }
 
 * {
@@ -786,3 +787,143 @@ body.dark nav {
     transform: scale(1.05);
 }
 
+@media (max-width: 768px) {
+
+    body {
+        padding: 0 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        gap: 10px;
+        padding-top: 20px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    .hero {
+        height: auto;
+        padding: 60px 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    .about-container {
+        padding: 60px 0;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .skills-list {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .grid-section {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    .extra-footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-right {
+        text-align: center;
+    }
+
+    .footer-center a {
+        display: inline-block;
+        margin: 5px 10px;
+    }
+}
+.project-image {
+    border-radius: 12px;
+}
+
+.project-card {
+    overflow: hidden;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 1000;
+}
+.project-card:active .project-image {
+    transform: scale(1.03);
+    filter: grayscale(0%);
+}
+/* Burger Icon */
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.burger span {
+    width: 25px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s ease;
+}
+
+/* Animate into X */
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(6px);
+}
+
+.burger.active span:nth-child(2) {
+    transform: rotate(-45deg) translateY(-6px);
+}
+@media (max-width: 768px) {
+
+    .burger {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 35px;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background: var(--bg);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
